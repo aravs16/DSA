@@ -1,6 +1,3 @@
-def printDiv():
-	print('-'*10)
-
 class Node:
 
 	def __init__(self,data):
@@ -28,30 +25,25 @@ class Node:
 
 
 def insertBST(head,node):
-	# print('Inserting at',head.data,node.data,head.left,head.right)
 
 	if node.data > head.data and head.right == None:
-		# print('Cond # 1')
 		head.insertRight(node)
 	elif node.data < head.data and head.left == None:
-		# print('Cond # 2')
 		head.insertLeft(node)
 	elif node.data < head.data:
-		# print('Cond # 3')
 		insertBST(head.left,node)
 	else:
-		#node.data > head.data
-		# print('Cond # 4')
 		insertBST(head.right,node)
 
 def inOrder(node):
 
 	if node:
-		
 		inOrder(node.left)
 		print(node.data)
 		inOrder(node.right)
 
+
+# Find height of the BST
 def findH(node):
 
 	if node:
@@ -85,7 +77,9 @@ def searchBST(head,data):
 
 def levelOrderTraversal(node):
 
-	# q = [n5]
+	# Print level order
+
+	# q = [node]
 
 	# while len(q) > 0:
 		
@@ -107,6 +101,8 @@ def levelOrderTraversal(node):
 	# 		if i.right != None:
 	# 			q.append(i.right)
 	# 		q.pop(0)
+
+	# Navigate level order
 
 	q = [node]
 
@@ -181,6 +177,10 @@ def searchAndDeleteNode(node,data):
 			searchAndDeleteNode(node.left,data)
 
 
+
+
+def printDiv():
+	print('-'*10)
 
 if __name__ == '__main__':
 
