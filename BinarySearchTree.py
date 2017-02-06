@@ -77,33 +77,6 @@ def searchBST(head,data):
 
 def levelOrderTraversal(node):
 
-	# Print level order
-
-	# q = [node]
-
-	# while len(q) > 0:
-		
-	# 	lev = ''
-
-	# 	for i in q:
-	# 		if i.left != None:
-	# 			lev = lev+' ('+str(i.left.data)+')'
-	# 		lev = lev+''+str(i.data)
-	# 		if i.right != None:
-	# 			lev = lev + '(' + str(i.right.data) +') '
-	# 	print(lev)
-
-	# 	qt = q[:]
-
-	# 	for i in qt:
-	# 		if i.left != None:
-	# 			q.append(i.left)
-	# 		if i.right != None:
-	# 			q.append(i.right)
-	# 		q.pop(0)
-
-	# Navigate level order
-
 	q = [node]
 
 	while len(q) > 0:
@@ -114,6 +87,33 @@ def levelOrderTraversal(node):
 		if curr.right != None:
 			q.append(curr.right)
 		q.pop(0)
+
+
+def printLevelOrder(node):
+
+	q = [node]
+
+	while len(q) > 0:
+		
+		lev = ''
+
+		for i in q:
+			if i.left != None:
+				lev = lev+' ('+str(i.left.data)+')'
+			lev = lev+''+str(i.data)
+			if i.right != None:
+				lev = lev + '(' + str(i.right.data) +') '
+		print(lev)
+
+		qt = q[:]
+
+		for i in qt:
+			if i.left != None:
+				q.append(i.left)
+			if i.right != None:
+				q.append(i.right)
+			q.pop(0)
+
 
 
 def findLowestInRight(node):
