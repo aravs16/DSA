@@ -1,3 +1,5 @@
+# Given an expression string such as '(((((3*2)*3)+4)*2)-6', build a parse tree and evaluate the value of the expression.
+
 class Node:
 
 	def __init__(self,data):
