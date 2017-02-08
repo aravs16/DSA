@@ -177,6 +177,18 @@ def searchAndDeleteNode(node,data):
 			searchAndDeleteNode(node.left,data)
 
 
+ global curr
+    if root != None:
+        if check_binary_search_tree_(root.left):
+            if root.data <= curr:
+                return False
+            else:
+                curr = root.data
+                if check_binary_search_tree_(root.right):
+                    return True
+    else:
+        return True
+        
 
 
 def printDiv():
