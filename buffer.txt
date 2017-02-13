@@ -1,0 +1,158 @@
+import time
+from Graph import Graph
+from Vertex import Vertex
+
+
+def bread_first_search(v):
+
+	q = [v]
+
+	while len(q) > 0:
+		curr = q.pop(0)
+	
+		for a in curr.getAdjacentVertices():
+			if a.color == 'WHITE':
+				a.color = 'GRAY'
+				q.append(a)
+				a.parent = curr
+				a.d = curr.d+1
+		a.color = 'BLACK'
+
+def print_path(s,v):
+	if v == s:
+		print(v.vid)
+	elif v.parent == None:
+		print('No path exists')
+	else:
+		print(v.vid)
+		print_path(s,v.parent)
+
+
+def isWithinRange(x,y,n):
+	if x < n and y < n and x > 0 and y > 0:
+		return True
+	return False
+
+def genMoves(x,y,a,b,n):
+
+	newMoves = []
+	offsets = [[a,b],[b,a],[-a,-b],[-b,-a],[-a,b],[a,-b],[-b,a],[b,-a]]
+	for o in offsets:
+		nx = x+o[0]
+		ny = y+o[1]
+		if isWithinRange(nx,ny,n):
+			newMoves.append([nx,ny])
+
+
+
+def KnightMoves():
+
+	n = 5
+	a = 1
+	b = 3
+	p = 0
+
+	moveTuples = [[0,0]]
+	g = Graph()
+
+	while len(moveTuples) > 0:
+
+		new = moveTuples[p:]
+		if len(new) == 0:
+			break;
+		for x,y in new:
+			p = p+1
+			v = Vertex(str(x)+','+str(y))
+			x1,y1 = x+a,y
+			x1,y1 = x1,y1+b
+			x2,y2 = x-a,y
+			x2,y2 = x2,y2-b
+
+			x3,y3 = x+b,y
+			x3,y3 = x3,y3+a
+			x4,y4 = x-b,y
+			x4,y4 = x4,y4-a
+
+			x5,y5 = x+a,y
+			x5,y5 = x5,y5-b
+			x6,y6 = x-a,y
+			x6,y6 = x6,y6+b
+
+			x7,y7 = x+b,y
+			x7,y7 = x7,y7-a
+			x8,y8 = x-b,y
+			x8,y8 = x8,y8+a
+
+
+			if [x1,y1] not in moveTuples and isWithinRange(x1,y1,n):			
+				moveTuples.append([x1,y1])
+				# print([x1,y1])
+				g.addEdge(v,Vertex(str(x1)+','+str(y1)))
+
+			if [x2,y2] not in moveTuples and isWithinRange(x2,y2,n):
+				moveTuples.append([x2,y2])
+				# print([x2,y2])
+				g.addEdge(v,Vertex(str(x2)+','+str(y2)))
+
+			if [x3,y3] not in moveTuples and isWithinRange(x3,y3,n):
+				moveTuples.append([x3,y3])
+				# print([x3,y3])
+				g.addEdge(v,Vertex(str(x3)+','+str(y3)))
+
+			if [x4,y4] not in moveTuples and isWithinRange(x4,y4,n):
+				moveTuples.append([x4,y4])
+				# print([x4,y4])
+				g.addEdge(v,Vertex(str(x4)+','+str(y4)))
+
+			if [x5,y5] not in moveTuples and isWithinRange(x5,y5,n):
+				moveTuples.append([x5,y5])
+				# print([x5,y5])
+				g.addEdge(v,Vertex(str(x5)+','+str(y5)))
+
+			if [x6,y6] not in moveTuples and isWithinRange(x6,y6,n):
+				moveTuples.append([x6,y6])
+				# print([x6,y6])
+				g.addEdge(v,Vertex(str(x6)+','+str(y6)))
+
+			if [x7,y7] not in moveTuples and isWithinRange(x7,y7,n):
+				moveTuples.append([x7,y7])
+				# print([x7,y7])
+				g.addEdge(v,Vertex(str(x7)+','+str(y7)))
+				
+			if [x8,y8] not in moveTuples and isWithinRange(x8,y8,n):
+				moveTuples.append([x8,y8])
+				# print([x8,y8])
+				g.addEdge(v,Vertex(str(x8)+','+str(y8)))
+
+			
+
+	
+	return g
+
+
+		
+
+
+if __name__ == '__main__':
+
+	g = KnightMoves()
+	start = None
+	end = None
+	for i in g.getAllVertices():
+		if i.vid == '0,0':
+			start = i
+			bread_first_search(i)
+		if i.vid == '4,4':
+			end = i
+
+	print_path(start,end)
+
+	
+
+
+
+
+
+
+
+
