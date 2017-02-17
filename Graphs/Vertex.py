@@ -12,3 +12,6 @@ class Vertex:
 
 	def getAdjacentVertices(self):
 		return self.connectedTo.keys()
+
+	def getEdgeWeight(self,V):
+		return self.connectedTo[V]

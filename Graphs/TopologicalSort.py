@@ -9,7 +9,6 @@ def DFS(G):
 		print('-'*20)
 
 
-
 tm = 0
 cycles = False
 top_sort = []

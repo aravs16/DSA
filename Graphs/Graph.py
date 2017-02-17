@@ -21,3 +21,8 @@ class Graph:
 
 	def getAllVertices(self):
 		return self.vertList.values()
+
+	def getVertex(self,vid):
+		for v in self.getAllVertices():
+			if v.vid == vid:
+				return v
